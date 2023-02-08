@@ -1,7 +1,7 @@
-my_text = input("Введите ряд: ")
+# RLE: Сжатие и восстановление данных
+my_text = input("Введите ряд вида 'aacccvvvvaaa' или '2a3c4v3a': ")
 print(my_text)
 if my_text.isalpha():
-    # my_text = "aaaddddssssaaddggeedd"
     my_text_plus_one = my_text.ljust(len(my_text) + 1,"*")
     new_my_text = ""
     i = 0
@@ -27,7 +27,7 @@ else:
             temp = ""
     print(f"Результат восстановления - {new_my_text}")
 
-# -------------------------Вариант для ряда вида  "e2e"-----------------
+# ------------------------- Вариант для ряда вида  "e2e" == "eee" -----------------
 # new_my_text = ""
 # my_list_num = []
 # my_list_word = []
@@ -42,7 +42,7 @@ else:
 #         temp = ""
 # print(f"Результат восстановления - {new_my_text}")
 
-# -------------------------Вариант для ряда вида "e2e" который выдаёт ошибку-----------------
+# ------------------------- Вариант для ряда вида "e2e" который выдаёт ошибку -----------------
 # if my_text[0].isdigit():
 #     new_my_text = ""
 #     my_list_num = []
