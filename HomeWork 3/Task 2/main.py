@@ -27,8 +27,8 @@ for key in my_dict:
                 score += int(key)
 print(score)
 
+# --------------------- Вариант без словаря ------------------------------------
 # for word in my_word_up:
-#     print(word)
 #     if list_score_1.count(word) == 1:
 #         score += 1
 #     if list_score_2.count(word) == 1:
