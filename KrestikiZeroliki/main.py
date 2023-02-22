@@ -1,3 +1,4 @@
+import copy
 my_dict_table = {1: "|_|", 2: "|_|", 3: "|_|",
                  4: "|_|", 5: "|_|", 6: "|_|",
                  7: "|_|", 8: "|_|", 9: "|_|"}
@@ -208,40 +209,49 @@ def search_winner(dictionary: dict) -> int:
     if count_program == 3:
         return num_program
 
+def game():
+    new_table = copy.deepcopy(my_dict_table)
+    who_begin = int(input("Если вы хотите делать ход первым введите - 1, если вторым - 2: "))
+    for hod in range(1, 10):
+        if who_begin == 1:
+            print(table(new_table))
+            if hod % 2 != 0:
+                table(hod_chose(new_table, int(input("Ваш ход: "))))
+                print("")
+            else:
+                print("Бот делает ход")
+                table(hod_robot_def(new_table))
+                print("")
+            if search_winner(new_table) == 1:
+                print("Вы победили !!!")
+                break
+            if search_winner(new_table) == 2:
+                print("Вы проиграли (")
+                break
+            if hod == 9:
+                print("Ничья")
+                break
+        if who_begin == 2:
+            if hod % 2 == 0:
+                table(hod_chose(new_table, int(input("Сделайте ход: "))))
+                print("")
+            else:
+                print("Бот делает ход")
+                table(hod_robot_def(new_table))
+                print("")
+            if search_winner(new_table) == 1:
+                print("Вы победили !!!")
+                break
+            if search_winner(new_table) == 2:
+                print("Вы проиграли (")
+                break
+            if hod == 9:
+                print("Ничья")
+                break
+    vopr = input("Хотите начать новую игру? y/n: ")
+    if vopr == "y":
+        return game()
+    else:
+        return print("Спасибо за игру")
 
-who_begin = int(input("Если вы хотите делать ход первым введите - 1, если вторым - 2: "))
-for hod in range(1, 10):
-    if who_begin == 1:
-        if hod % 2 != 0:
-            table(hod_chose(my_dict_table, int(input("Ваш ход: "))))
-            print("")
-        else:
-            print("Бот делает ход")
-            table(hod_robot_def(my_dict_table))
-            print("")
-        if search_winner(my_dict_table) == 1:
-            print("Вы победили !!!")
-            break
-        if search_winner(my_dict_table) == 2:
-            print("Вы проиграли (")
-            break
-        if hod == 9:
-            print("Ничья")
-            break
-    if who_begin == 2:
-        if hod % 2 == 0:
-            table(hod_chose(my_dict_table, int(input("Сделайте ход: "))))
-            print("")
-        else:
-            print("Бот делает ход")
-            table(hod_robot_def(my_dict_table))
-            print("")
-        if search_winner(my_dict_table) == 1:
-            print("Вы победили !!!")
-            break
-        if search_winner(my_dict_table) == 2:
-            print("Вы проиграли (")
-            break
-        if hod == 9:
-            print("Ничья")
-            break
+game()
